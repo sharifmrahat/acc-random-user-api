@@ -29,8 +29,25 @@ module.exports.saveUser = async (req, res) => {
     res.send(status);
   } else {
     res.send({
-      message: "Please provide all valid information",
-      field: "name, gender, contactm address amd photoURL",
+      message: "Please provide all properties of a user",
+      field: "name, gender, contact, address, photoURL",
     });
   }
+};
+
+module.exports.updateUser = async (req, res) => {
+  const { _id } = req.body;
+  if (!_id) {
+    return res.send({ message: "User Id is no found!" });
+  }
+  const users = await usersData.getUsersData();
+
+  const selectedUser = users.findIndex(
+    (user) => user._id.toString() === _id.toString()
+  );
+
+  const user = { ...users[selectedUser], ...req.body };
+  users[selectedUser] = user;
+  const status = await usersData.updateUser(users);
+  res.send(status);
 };

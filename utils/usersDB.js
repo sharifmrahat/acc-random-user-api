@@ -20,4 +20,14 @@ const saveNewUser = async (newUser) => {
     return { success: false };
   }
 };
-module.exports = { getUsersData, saveNewUser };
+
+const updateUser = async (updatedData) => {
+  try {
+    fs.writeFileSync(file, JSON.stringify(updatedData));
+    return { success: true, message: "Successfully updated" };
+  } catch (err) {
+    return { success: false, message: "Update failed" };
+  }
+};
+
+module.exports = { getUsersData, saveNewUser, updateUser };

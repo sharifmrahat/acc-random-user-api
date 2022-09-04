@@ -14,6 +14,8 @@ router
 
   .get("/random", usersControllers.getRandomUser)
 
-  .post("/save", usersControllers.saveUser);
+  .post("/save", usersControllers.saveUser)
+
+  .patch("/update", usersControllers.updateUser);
 
 module.exports = router;
