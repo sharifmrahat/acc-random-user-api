@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const usersRoutes = require("./routes/v1/users.route.js");
+const usersRoutes = require("./routes/v1/users.route");
 const errorHandler = require("./middleware/errorHandler");
 
 const PORT = process.env.PORT || 5000;
