@@ -16,6 +16,8 @@ router
 
   .post("/save", usersControllers.saveUser)
 
-  .patch("/update", usersControllers.updateUser);
+  .patch("/update", usersControllers.updateUser)
+
+  .patch("/bulk-update", usersControllers.updateBulkUsers);
 
 module.exports = router;
