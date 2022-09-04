@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 const file = path.join(__dirname, "../public/usersData.json");
-console.log(file);
 
 const getUsersData = () => {
   const data = fs.readFileSync(file, "utf-8");

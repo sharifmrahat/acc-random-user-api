@@ -8,8 +8,10 @@ router
    *
    */
   .get("/", (req, res) => {
-    res.send({ Users: "Users data is found" });
+    res.send("Server is running, you can get users data");
   })
-  .get("/all", usersControllers.getAllUsers);
+  .get("/all", usersControllers.getAllUsers)
+
+  .get("/random", usersControllers.getRandomUser);
 
 module.exports = router;
