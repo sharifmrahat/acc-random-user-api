@@ -79,3 +79,11 @@ module.exports.updateBulkUsers = async (req, res) => {
   const status = await usersData.updateUser(users);
   res.send(status);
 };
+
+module.exports.deleteUser = async (req, res) => {
+  const { id } = req.query;
+  if (!id) return res.send({ message: "User Id is not found" });
+
+  const status = await usersData.deleteOne(id);
+  res.send(status);
+};

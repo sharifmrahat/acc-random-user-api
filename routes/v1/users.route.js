@@ -18,6 +18,8 @@ router
 
   .patch("/update", usersControllers.updateUser)
 
-  .patch("/bulk-update", usersControllers.updateBulkUsers);
+  .patch("/bulk-update", usersControllers.updateBulkUsers)
+
+  .delete("/delete", usersControllers.deleteUser);
 
 module.exports = router;

@@ -15,9 +15,13 @@ const saveNewUser = async (newUser) => {
     const _id = users.length + 1;
     users.push({ ...newUser, _id });
     fs.writeFileSync(file, JSON.stringify(users));
-    return { success: true, data: { ...newUser, _id } };
+    return {
+      success: true,
+      message: "Successfully saved",
+      data: { ...newUser, _id },
+    };
   } catch (err) {
-    return { success: false };
+    return { success: false, message: "Saving failed" };
   }
 };
 
@@ -30,4 +34,20 @@ const updateUser = async (updatedData) => {
   }
 };
 
-module.exports = { getUsersData, saveNewUser, updateUser };
+const deleteOne = async (selectedId) => {
+  try {
+    const users = await getUsersData();
+    const residualUsers = users.filter(
+      (user) => user._id.toString() !== selectedId.toString()
+    );
+    if (users.length === residualUsers.length)
+      return { message: "Users data is not found" };
+
+    fs.writeFileSync(file, JSON.stringify(residualUsers));
+    return { success: true, message: "Successfully deleted" };
+  } catch (err) {
+    return { success: false, message: "Delete failed" };
+  }
+};
+
+module.exports = { getUsersData, saveNewUser, updateUser, deleteOne };
