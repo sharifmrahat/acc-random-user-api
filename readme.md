@@ -1,3 +1,3 @@
 ## Random User API
 
-- Live Server Link:
+- Live Server Link: https://acc-random-user-api.herokuapp.com/user
