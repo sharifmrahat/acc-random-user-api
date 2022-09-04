@@ -9,4 +9,15 @@ const getUsersData = () => {
   return users;
 };
 
-module.exports = { getUsersData };
+const saveNewUser = async (newUser) => {
+  try {
+    const users = await getUsersData();
+    const _id = users.length + 1;
+    users.push({ ...newUser, _id });
+    fs.writeFileSync(file, JSON.stringify(users));
+    return { success: true, data: { ...newUser, _id } };
+  } catch (err) {
+    return { success: false };
+  }
+};
+module.exports = { getUsersData, saveNewUser };

@@ -12,6 +12,8 @@ router
   })
   .get("/all", usersControllers.getAllUsers)
 
-  .get("/random", usersControllers.getRandomUser);
+  .get("/random", usersControllers.getRandomUser)
+
+  .post("/save", usersControllers.saveUser);
 
 module.exports = router;

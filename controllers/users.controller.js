@@ -15,3 +15,22 @@ module.exports.getRandomUser = async (req, res) => {
   const randomUser = users[randomIndex];
   res.send(randomUser);
 };
+
+module.exports.saveUser = async (req, res) => {
+  const user = req.body;
+  if (
+    user.gender &&
+    user.name &&
+    user.contact &&
+    user.address &&
+    user.photoUrl
+  ) {
+    const status = await usersData.saveNewUser(user);
+    res.send(status);
+  } else {
+    res.send({
+      message: "Please provide all valid information",
+      field: "name, gender, contactm address amd photoURL",
+    });
+  }
+};
